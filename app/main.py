@@ -32,10 +32,10 @@ async def books_1(book: schemas.RecipeIn) -> models.Recipes:
 
 @app.get('/recipes/{recipe_id}', response_model=schemas.RecipeOutShort)
 @app.get('/recipes', response_model=List[schemas.RecipeOutLong])
-async def books(recipe_id=None) -> List[models.Recipes]:
+async def books(recipe_id=None) -> Sequence[Any]:
     if recipe_id:
         async with session.begin():
-            data = await session.execute(select(models.Recipes).where(models.Recipes.id == recipe_id))
+            data: scalar = await session.execute(select(models.Recipes).where(models.Recipes.id == recipe_id))
         res = data.scalar()
         if res:
             async with session.begin():
