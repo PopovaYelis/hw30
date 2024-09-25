@@ -1,5 +1,5 @@
 from typing import List
-
+import sqlalchemy.future
 from fastapi import FastAPI, HTTPException
 from sqlalchemy.future import select
 
@@ -23,7 +23,7 @@ async def shutdown():
 
 
 @app.post('/recipes', response_model=schemas.RecipeOutShort)
-async def books(book: schemas.RecipeIn) -> models.Recipes:
+async def books_1(book: schemas.RecipeIn) -> models.Recipes:
     new_book = models.Recipes(**book.dict())
     async with session.begin():
         session.add(new_book)
