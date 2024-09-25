@@ -31,4 +31,4 @@ jobs:
         run: isort --profil black --diff .
 
       - name: Run mypy
-        run: mypy -p package .
+        run: mypy .
