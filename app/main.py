@@ -8,7 +8,7 @@ from database import engine, session
 
 app = FastAPI()
 
-ignore_missing_imports = True
+
 
 @app.on_event("startup")
 async def startup():
