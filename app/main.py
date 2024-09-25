@@ -1,5 +1,4 @@
 from typing import List
-import sqlalchemy.future
 from fastapi import FastAPI, HTTPException
 from sqlalchemy.future import select
 
@@ -9,6 +8,7 @@ from database import engine, session
 
 app = FastAPI()
 
+ignore_missing_imports = True
 
 @app.on_event("startup")
 async def startup():

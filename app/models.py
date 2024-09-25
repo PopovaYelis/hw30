@@ -1,7 +1,8 @@
-import sqlalchemy
 from sqlalchemy import Column, String, Integer
 
 from database import Base
+
+ignore_missing_imports = True
 
 class Recipes(Base):
     __tablename__ = 'Recipes'
