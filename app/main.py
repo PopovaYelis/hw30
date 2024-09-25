@@ -1,6 +1,6 @@
 from typing import List
 from fastapi import FastAPI, HTTPException
-from sqlalchemy.future import select type: ignor
+from sqlalchemy.future import select
 
 import models
 import schemas
