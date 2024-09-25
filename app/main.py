@@ -1,4 +1,4 @@
-from typing import List, Any, Sequence
+from typing import List, Any, Sequence, coroutine
 from fastapi import FastAPI, HTTPException
 from sqlalchemy.future import select
 
@@ -35,8 +35,8 @@ async def books_1(book: schemas.RecipeIn) -> models.Recipes:
 async def books(recipe_id=None) -> Sequence[Any]:
     if recipe_id:
         async with session.begin():
-            data: str = await session.execute(select(models.Recipes).where(models.Recipes.id == recipe_id)).scalar()
-        res = data
+            data: coroutine = await session.execute(select(models.Recipes).where(models.Recipes.id == recipe_id))
+        res = data.scalar()
         if res:
             async with session.begin():
                 res.views += 1
