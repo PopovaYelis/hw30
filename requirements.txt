@@ -2,8 +2,6 @@ fastapi==0.70.0
 uvicorn[standard]==0.15.0
 sqlalchemy==1.4.26
 sqlalchemy-stubs
-sqlalchemy.ext.asyncio
-sqlalchemy.future 
 aiosqlite==0.17.0
 greenlet==1.1.2
 black==22.3.0
