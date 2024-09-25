@@ -1,4 +1,4 @@
-from typing import List
+from typing import List, Any, Sequence
 from fastapi import FastAPI, HTTPException
 from sqlalchemy.future import select
 
@@ -35,7 +35,7 @@ async def books_1(book: schemas.RecipeIn) -> models.Recipes:
 async def books(recipe_id=None) -> Sequence[Any]:
     if recipe_id:
         async with session.begin():
-            data: scalar = await session.execute(select(models.Recipes).where(models.Recipes.id == recipe_id))
+            data = await session.execute(select(models.Recipes).where(models.Recipes.id == recipe_id))
         res = data.scalar()
         if res:
             async with session.begin():
